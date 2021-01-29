@@ -97,50 +97,54 @@ document.addEventListener("DOMContentLoaded", () => {
     acessoWebFrame = new AcessoWebFrame();
 
     onSuccessCapture = (obj) => {
-        showCompletedAnimation();
+        // showCompletedAnimation();
+        console.log('onSuccessCapture')
         console.log(obj);
     }
 
     onFailedCapture = (err) => {
+        console.log('onFailedCapture')
         if (err === "navigator.MediaDevices.getUserMedia error: Permission denied, NotAllowedError") {
-            showError('Você negou o acesso a câmera. Procure pelo icone de câmera na barra de navegação e mude sua decisão.')
+            // showError('Você negou o acesso a câmera. Procure pelo icone de câmera na barra de navegação e mude sua decisão.')
+            console.log('Você negou o acesso a câmera. Procure pelo icone de câmera na barra de navegação e mude sua decisão.')
         }
 
         console.log(err);
     }
 
     onBrowserNotSupport = (obj) => {
+        console.log('onBrowserNotSupport')
         console.log(obj);
-        let boxSupport = document.getElementById('box--support');
+        // let boxSupport = document.getElementById('box--support');
 
-        for (let i = 0; i < obj.listBrowsersSupport.length; i++) {
-            if (obj.listBrowsersSupport[i] === 'Chrome') {
-                boxSupport.querySelector('#li-chrome').classList.add('no-grayscale');
-                continue;
-            }
+        // for (let i = 0; i < obj.listBrowsersSupport.length; i++) {
+        //     if (obj.listBrowsersSupport[i] === 'Chrome') {
+        //         boxSupport.querySelector('#li-chrome').classList.add('no-grayscale');
+        //         continue;
+        //     }
 
-            if (obj.listBrowsersSupport[i] === 'Firefox') {
-                boxSupport.querySelector('#li-firefox').classList.add('no-grayscale');
-                continue;
-            }
+        //     if (obj.listBrowsersSupport[i] === 'Firefox') {
+        //         boxSupport.querySelector('#li-firefox').classList.add('no-grayscale');
+        //         continue;
+        //     }
 
-            if (obj.listBrowsersSupport[i] === 'Edge') {
-                boxSupport.querySelector('#li-edge').classList.add('no-grayscale');
-                continue;
-            }
+        //     if (obj.listBrowsersSupport[i] === 'Edge') {
+        //         boxSupport.querySelector('#li-edge').classList.add('no-grayscale');
+        //         continue;
+        //     }
 
-            if (obj.listBrowsersSupport[i] === 'Opera') {
-                boxSupport.querySelector('#li-opera').classList.add('no-grayscale');
-                continue;
-            }
+        //     if (obj.listBrowsersSupport[i] === 'Opera') {
+        //         boxSupport.querySelector('#li-opera').classList.add('no-grayscale');
+        //         continue;
+        //     }
 
-            if (obj.listBrowsersSupport[i] === 'Safari') {
-                boxSupport.querySelector('#li-safari').classList.add('no-grayscale');
-                continue;
-            }
-        };
+        //     if (obj.listBrowsersSupport[i] === 'Safari') {
+        //         boxSupport.querySelector('#li-safari').classList.add('no-grayscale');
+        //         continue;
+        //     }
+        // };
 
-        boxSupport.style.display = 'block';
+        // boxSupport.style.display = 'block';
     };
 
     acessoWebFrame.onSuccessCaptureJS = onSuccessCapture;
