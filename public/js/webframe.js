@@ -44,15 +44,18 @@ const setTypeCamera = (_type) => {
             acessoWebFrame.initCameraNormal('#fff');
             break;
         case 2:
-            showLoadingModels();
+            // showLoadingModels();
+            console.log('showLoadingModels')
             acessoWebFrame.acessoWebFrameModel.loadModelsCameraInteligence()
                 .then(() => {
                     hideLoadingModels();
                     acessoWebFrame.initCameraInteligence('#2980ff', '#ed2121', '#fff');
                 })
                 .catch((e) => {
-                    showError(e);
+                    // showError(e);
+                    console.log('showError')
                     console.log(e);
+                    acessoWebFrame.initCameraNormal('#fff');
                 });
             break;
         case 3:
