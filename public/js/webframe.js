@@ -12,31 +12,6 @@ const getUrlVars = () => {
     return vars;
 };
 
-const showCompletedAnimation = () => {
-    document.getElementById('box--completed').style.display = 'inline-block';
-};
-
-const hideCompletedAnimation = () => {
-    document.getElementById('box--completed').style.display = 'none';
-};
-
-const showLoadingModels = () => {
-    document.getElementById('box--loading-models').style.display = 'inline-block';
-};
-
-const hideLoadingModels = () => {
-    document.getElementById('box--loading-models').style.display = 'none';
-};
-
-const showError = (message = "Ops... Algo inesperado aconteceu!") => {
-    document.getElementById('error-message').innerHTML = message;
-    document.getElementById('box--error').style.display = 'inline-block';
-};
-
-const hideError = () => {
-    document.getElementById('box--error').style.display = 'none';
-};
-
 const setTypeCamera = (_type) => {
 
     switch (_type) {
@@ -44,15 +19,12 @@ const setTypeCamera = (_type) => {
             acessoWebFrame.initCameraNormal('#fff');
             break;
         case 2:
-            // showLoadingModels();
             console.log('showLoadingModels')
             acessoWebFrame.acessoWebFrameModel.loadModelsCameraInteligence()
                 .then(() => {
-                    hideLoadingModels();
                     acessoWebFrame.initCameraInteligence('#2980ff', '#ed2121', '#fff');
                 })
                 .catch((e) => {
-                    // showError(e);
                     console.log('showError')
                     console.log(e);
                     acessoWebFrame.initCameraNormal('#fff');
@@ -100,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
     acessoWebFrame = new AcessoWebFrame();
 
     onSuccessCapture = (obj) => {
-        // showCompletedAnimation();
         console.log('onSuccessCapture')
         console.log(obj);
     }
@@ -108,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
     onFailedCapture = (err) => {
         console.log('onFailedCapture')
         if (err === "navigator.MediaDevices.getUserMedia error: Permission denied, NotAllowedError") {
-            // showError('Você negou o acesso a câmera. Procure pelo icone de câmera na barra de navegação e mude sua decisão.')
             console.log('Você negou o acesso a câmera. Procure pelo icone de câmera na barra de navegação e mude sua decisão.')
         }
 
@@ -118,36 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
     onBrowserNotSupport = (obj) => {
         console.log('onBrowserNotSupport')
         console.log(obj);
-        // let boxSupport = document.getElementById('box--support');
-
-        // for (let i = 0; i < obj.listBrowsersSupport.length; i++) {
-        //     if (obj.listBrowsersSupport[i] === 'Chrome') {
-        //         boxSupport.querySelector('#li-chrome').classList.add('no-grayscale');
-        //         continue;
-        //     }
-
-        //     if (obj.listBrowsersSupport[i] === 'Firefox') {
-        //         boxSupport.querySelector('#li-firefox').classList.add('no-grayscale');
-        //         continue;
-        //     }
-
-        //     if (obj.listBrowsersSupport[i] === 'Edge') {
-        //         boxSupport.querySelector('#li-edge').classList.add('no-grayscale');
-        //         continue;
-        //     }
-
-        //     if (obj.listBrowsersSupport[i] === 'Opera') {
-        //         boxSupport.querySelector('#li-opera').classList.add('no-grayscale');
-        //         continue;
-        //     }
-
-        //     if (obj.listBrowsersSupport[i] === 'Safari') {
-        //         boxSupport.querySelector('#li-safari').classList.add('no-grayscale');
-        //         continue;
-        //     }
-        // };
-
-        // boxSupport.style.display = 'block';
     };
 
     acessoWebFrame.onSuccessCaptureJS = onSuccessCapture;
