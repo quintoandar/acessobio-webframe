@@ -196,8 +196,42 @@ body {
     -webkit-appearance: none;
 }
 
+/*#region Message Label */
+
+#box-camera #message {
+    background-color: rgba(41, 128, 255, 1) !important;
+    border-radius: 2px;
+    color: #fff !important;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
 
 /*#endregion */
 
+
+/*#region Label Document */
+
+#box-camera #box--document-info #label--document {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+/*#endregion */
+
+/*#region Popup Orientation */	
+
+#box-camera #box--orientation {	
+    display: inline-block;	
+    position: fixed;	
+    width: 100vw;	
+    height: 100vh;	
+    background-color: white;	
+    z-index: 63;	
+    left: 0;	
+    top: 0;	
+    visibility: hidden;	
+    opacity: 0;	
+}	
 
 /*#endregion */
